@@ -32,7 +32,7 @@ addIcons({ heart, logoApple, settingsSharp, star });
   });
 }
 
-// 
+// This sends the search query to the API, then whatever is found is returned to this.movies.
 searchMovies() {
   this.myhttp.searchMovies(this.key).subscribe((data: any) => {
     this.movies = data.results;
@@ -41,6 +41,7 @@ searchMovies() {
 
 showMovieDetails(movie: any) {
   this.data.selectedMovieId = movie.id;
+  this.data.selectedMovieTitle = movie.title;
   this.data.selectedMovieOverview = movie.overview;
   this.data.selectedMoviePoster = movie.poster_path;
   this.router.navigate(['movie-details']);

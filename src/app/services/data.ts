@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
+  selectedMovieTitle: string = "";
   selectedMovieId: number = 0;
   selectedPersonId: number = 0;
   favouritesList: any[] = [];

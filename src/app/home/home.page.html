@@ -14,7 +14,7 @@
   <ion-button size="medium" (click)="searchMovies()">Search</ion-button>
   <p *ngIf="key == ''">Today's Trending Movies</p>
   <p *ngIf="key != ''">{{ key }} Movies</p>
-  <ion-card *ngFor="let movie of movies">
+  <ion-card *ngFor="let movie of movies" (click)="showMovieDetails(movie)">
     <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"/>
     <ion-card-content>
       {{ movie.overview }}
