@@ -11,7 +11,9 @@
 
 <ion-content [fullscreen]="true">
   <ion-input [(ngModel)]="key" placeholder="Search Movies"></ion-input>
-  <ion-button size="large" (click)="searchMovies()">Search</ion-button>
+  <ion-button size="medium" (click)="searchMovies()">Search</ion-button>
+  <p *ngIf="key == ''">Today's Trending Movies</p>
+  <p *ngIf="key != ''">{{ key }} Movies</p>
   <ion-card *ngFor="let movie of movies">
     <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"/>
     <ion-card-content>

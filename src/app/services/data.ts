@@ -8,6 +8,8 @@ export class DataService {
   selectedMovieId: number = 0;
   selectedPersonId: number = 0;
   favouritesList: any[] = [];
+  selectedMovieOverview: string = "";
+  selectedMoviePoster: string = "";
 
 // This method will 'push' the selected movie to the favouritesList array.
 addFavourite(movie: any) { 

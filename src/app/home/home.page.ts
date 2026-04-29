@@ -32,11 +32,21 @@ addIcons({ heart, logoApple, settingsSharp, star });
   });
 }
 
+// 
 searchMovies() {
   this.myhttp.searchMovies(this.key).subscribe((data: any) => {
     this.movies = data.results;
   })
 }
+
+showMovieDetails(movie: any) {
+  this.data.selectedMovieId = movie.id;
+  this.data.selectedMovieOverview = movie.overview;
+  this.data.selectedMoviePoster = movie.poster_path;
+  this.router.navigate(['movie-details']);
+}
+
+
   // Implementing this method from the OnInit interface to run the getTrending method as soon as the page begins loading.
   ngOnInit() {
     this.getTrending();
