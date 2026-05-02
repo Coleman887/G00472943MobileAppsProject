@@ -5,9 +5,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">movie-details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  {{ data.selectedMovieOverview }}
+  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == false" size="medium" (click)="addToFavouritesButton()">Add To Favourites</ion-button>
+  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == true" size="medium" (click)="removeFromFavouritesButton()">Remove From Favourites</ion-button>
+  <h4>Cast</h4>
+  <ion-card *ngFor="let castMember of cast" (click)="storePersonId(castMember)">
+    <img [src]="'https://image.tmdb.org/t/p/w500' + castMember.profile_path"/>
+    <ion-card-content>
+      <h1>{{ castMember.character }}</h1>
+      <h2>{{ castMember.name }}</h2>
+    </ion-card-content>
+  </ion-card>
+  <h4>Crew</h4>
+  <ion-card *ngFor="let crewMember of crew" (click)="storePersonId(crewMember)">
+    <img [src]="'https://image.tmdb.org/t/p/w500' + crewMember.profile_path"/>
+    <ion-card-content>
+     <h2>{{ crewMember.name }}</h2>
+      {{ crewMember.job }}
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
+

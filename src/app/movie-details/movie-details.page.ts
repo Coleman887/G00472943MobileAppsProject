@@ -19,6 +19,10 @@ export class MovieDetailsPage implements OnInit {
 
   cast: any[] = [];
   crew: any[] = [];
+  movie: any = {id: this.data.selectedMovieId,
+                title: this.data.selectedMovieTitle,
+                poster_path: this.data.selectedMoviePoster
+  }
 
   constructor(public router : Router, private myhttp: MyHttpService, public data: DataService) { 
       addIcons({ heart, home, logoApple, settingsSharp, star })
@@ -36,5 +40,28 @@ export class MovieDetailsPage implements OnInit {
     });
   }
 
+  // This is used when the add to favourites button is clicked, adding
+  addToFavouritesButton() {
+    let movie = { id: this.data.selectedMovieId,
+                  title: this.data.selectedMovieTitle,
+                  poster_path: this.data.selectedMoviePoster
+  }
+  this.data.addFavourite(movie);
+    }
 
-}
+  removeFromFavouritesButton() {
+    let movie = { id: this.data.selectedMovieId,
+                  title: this.data.selectedMovieTitle,
+                  poster_path: this.data.selectedMoviePoster
+    }
+    this.data.removeFavourite(movie);
+  }
+
+  storePersonId(person: any) {
+    this.data.selectedPersonId = person.id;
+    this.router.navigate(['details']);
+  }
+  }
+  
+
+

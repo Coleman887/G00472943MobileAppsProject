@@ -39,6 +39,8 @@ searchMovies() {
   })
 }
 
+// This method gets called from the Home page when the user clicks on a movie poster.
+// Stores selected movie's details into the DataService properties then navigates to the Movie Details page.
 showMovieDetails(movie: any) {
   this.data.selectedMovieId = movie.id;
   this.data.selectedMovieTitle = movie.title;
