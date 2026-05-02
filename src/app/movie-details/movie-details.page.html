@@ -10,7 +10,8 @@
   <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == true" size="medium" (click)="removeFromFavouritesButton()">Remove From Favourites</ion-button>
   <h4>Cast</h4>
   <ion-card *ngFor="let castMember of cast" (click)="storePersonId(castMember)">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + castMember.profile_path"/>
+    <img *ngIf="castMember.profile_path != '' && castMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w300' + castMember.profile_path"/>
+    <p *ngIf="castMember.profile_path == null || castMember.profile_path == ''">No Image Avaialable</p>
     <ion-card-content>
       <h1>{{ castMember.character }}</h1>
       <h2>{{ castMember.name }}</h2>
@@ -18,7 +19,8 @@
   </ion-card>
   <h4>Crew</h4>
   <ion-card *ngFor="let crewMember of crew" (click)="storePersonId(crewMember)">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + crewMember.profile_path"/>
+    <img *ngIf="crewMember.profile_path != '' && crewMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w300' + crewMember.profile_path"/>
+    <p *ngIf="crewMember.profile_path == null || crewMember.profile_path == ''">No Image Available</p>
     <ion-card-content>
      <h2>{{ crewMember.name }}</h2>
       {{ crewMember.job }}

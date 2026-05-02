@@ -1,13 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>details</ion-title>
+    <ion-title>{{ personDetails.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-card>
+<img [src]="'https://image.tmdb.org/t/p/w300' +  personDetails.profile_path"/>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+</ion-card>
+
+<ion-content>
+ 
 </ion-content>
