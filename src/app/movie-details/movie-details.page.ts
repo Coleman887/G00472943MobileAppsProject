@@ -7,15 +7,16 @@ import { DataService } from '../services/data';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { heart, home, logoApple, settingsSharp, star } from 'ionicons/icons';
+import { ViewWillEnter } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.page.html',
   styleUrls: ['./movie-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonButtons, IonCard, IonIcon, IonCardContent, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonButton, IonCard, IonIcon, IonCardContent, CommonModule, FormsModule]
 })
-export class MovieDetailsPage implements OnInit {
+export class MovieDetailsPage implements OnInit, ViewWillEnter {
 
   cast: any[] = [];
   crew: any[] = [];
@@ -29,6 +30,10 @@ export class MovieDetailsPage implements OnInit {
   }
 
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
     let id = this.data.selectedMovieId;
     this.getMovieCredits(id);
   }

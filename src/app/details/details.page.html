@@ -3,12 +3,21 @@
     <ion-title>{{ personDetails.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-card>
-<img [src]="'https://image.tmdb.org/t/p/w300' +  personDetails.profile_path"/>
 
-
+<ion-content [fullscreen]="true">
+ <ion-card>
+<img *ngIf="personDetails.profile_path != '' && personDetails.profile_path != null" [src]="'https://image.tmdb.org/t/p/w300' +  personDetails.profile_path"/>
+<p *ngIf="personDetails.profile_path == null || personDetails.profile_path == ''">No Image Avaialable</p>
 </ion-card>
+ <h4 *ngFor="let otherName of personDetails.also_known_as"> {{ otherName }} </h4>
+ <h4 *ngIf="personDetails.birthday != null">{{ personDetails.birthday }}</h4>
+  <h4 *ngIf="personDetails.deathday != null">{{ personDetails.deathday }}</h4>
+ <h4 *ngIf="personDetails.place_of_birth != null"> {{ personDetails.place_of_birth }} </h4>
+ <p>{{ personDetails.biography }}</p>
+ <ion-card *ngFor="let movieCredits of personMovieCredits" (click)="showMovieDetails(movieCredits)">
+<ion-card-content>
+  {{ movieCredits.title }}
+</ion-card-content>
+ </ion-card>
 
-<ion-content>
- 
 </ion-content>
