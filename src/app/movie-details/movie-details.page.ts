@@ -49,6 +49,7 @@ export class MovieDetailsPage implements OnInit, ViewWillEnter {
   addToFavouritesButton() {
     let movie = { id: this.data.selectedMovieId,
                   title: this.data.selectedMovieTitle,
+                  overview: this.data.selectedMovieOverview,
                   poster_path: this.data.selectedMoviePoster
   }
   this.data.addFavourite(movie);

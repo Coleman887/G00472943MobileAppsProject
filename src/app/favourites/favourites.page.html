@@ -1,13 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>This...is the Favourites page</ion-title>
+    <ion-title>Favourite Movies</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">favourites</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card *ngFor="let favMovie of data.favouritesList">
+    <img [src]="'https://image.tmdb.org/t/p/w300' + favMovie.poster_path"/>
+  <ion-card-content>
+    <h1>{{ favMovie.title}}</h1>
+  </ion-card-content>
+  <ion-card-content>
+        <ion-button (click)="showMovieDetails(favMovie)" shape="round">Details</ion-button>
+  </ion-card-content>
+   
+    </ion-card>
 </ion-content>

@@ -15,6 +15,7 @@
  <h4 *ngIf="personDetails.place_of_birth != null"> {{ personDetails.place_of_birth }} </h4>
  <p>{{ personDetails.biography }}</p>
  <ion-card *ngFor="let movieCredits of personMovieCredits" (click)="showMovieDetails(movieCredits)">
+  <img *ngIf="movieCredits.poster_path != null" [src]="'https://image.tmdb.org/t/p/w200' + movieCredits.poster_path"/>
 <ion-card-content>
   {{ movieCredits.title }}
 </ion-card-content>
