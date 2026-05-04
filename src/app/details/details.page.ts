@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonIcon, IonToolbar, IonCard, IonCardContent, IonButton, IonButtons } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonIcon, IonToolbar, IonCard, IonCardContent, IonButton, IonButtons, IonItem } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { heart, home, logoApple, settingsSharp, star} from 'ionicons/icons';
@@ -14,7 +14,7 @@ import { ViewWillEnter } from '@ionic/angular/standalone';
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent, IonButton, IonButtons]
+  imports: [IonContent, IonHeader, IonIcon, IonTitle, IonItem, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent, IonButton, IonButtons, IonItem]
 })
 export class DetailsPage implements OnInit, ViewWillEnter {
   movies: any[] = []

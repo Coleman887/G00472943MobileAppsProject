@@ -6,7 +6,7 @@ import { MyHttpService } from '../services/my-http';
 import { DataService } from '../services/data';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { heart, home, logoApple, settingsSharp, star } from 'ionicons/icons';
+import { arrowBack, heart, home, logoApple, settingsSharp, star } from 'ionicons/icons';
 import { ViewWillEnter } from '@ionic/angular/standalone';
 
 @Component({
@@ -26,7 +26,7 @@ export class MovieDetailsPage implements OnInit, ViewWillEnter {
   }
 
   constructor(public router : Router, private myhttp: MyHttpService, public data: DataService) { 
-      addIcons({ heart, home, logoApple, settingsSharp, star })
+      addIcons({ heart, home, logoApple, settingsSharp, star, arrowBack })
   }
 
   ngOnInit() {

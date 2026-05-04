@@ -1,9 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+     <img [src]="'https://files.readme.io/29c6fee-blue_short.svg'" style="height: 25px;"/>
+     <ion-buttons slot="start">
+      <ion-button (click)="router.navigate(['home'])">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Favourite Movies</ion-title>
      <ion-buttons slot="end">
       <ion-button (click)="router.navigate(['favourites'])">
-        <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
       </ion-button>
             <ion-button (click)="router.navigate(['home'])">
         <ion-icon slot="icon-only" name="home"></ion-icon>
@@ -19,7 +25,7 @@
     <h1>{{ favMovie.title}}</h1>
   </ion-card-content>
   <ion-card-content>
-        <ion-button (click)="showMovieDetails(favMovie)" shape="round">Details</ion-button>
+        <ion-button (click)="showMovieDetails(favMovie)" shape="round" color="primary">Details</ion-button>
   </ion-card-content>
    
     </ion-card>

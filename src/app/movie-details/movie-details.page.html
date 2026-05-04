@@ -1,28 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> {{ data.selectedMovieTitle }} </ion-title>
+    <img [src]="'https://files.readme.io/29c6fee-blue_short.svg'" style="height: 25px;"/>
+    <ion-buttons slot="start">
+      <ion-button (click)="router.navigate(['home'])">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
      <ion-buttons slot="end">
       <ion-button (click)="router.navigate(['favourites'])">
-        <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
       </ion-button>
             <ion-button (click)="router.navigate(['home'])">
         <ion-icon slot="icon-only" name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-title>  </ion-title>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  {{ data.selectedMovieOverview }}
-  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == false" size="medium" (click)="addToFavouritesButton()">Add To Favourites
-  <ion-icon slot="icon-only" name="heart"></ion-icon>
+   <p>{{ data.selectedMovieTitle }}</p> 
+  <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"/>
+  <p>{{ data.selectedMovieOverview }}</p>
+  <p *ngIf="movie.vote_average != null">Audience Rating: {{ movie.vote_average.toFixed(1) }}</p>
+  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == false" size="medium" color="primary" (click)="addToFavouritesButton()">Add To Favourites
+  <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
   </ion-button>
-  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == true" size="medium" (click)="removeFromFavouritesButton()">Remove From favourites
-  <ion-icon slot="icon-only" name="heart"></ion-icon>
+  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == true" size="medium" color="light" (click)="removeFromFavouritesButton()">Remove From favourites
+  <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
   </ion-button>
   <h4>Cast</h4>
   <ion-card *ngFor="let castMember of cast" (click)="storePersonId(castMember)">
-    <img *ngIf="castMember.profile_path != '' && castMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w300' + castMember.profile_path"/>
+    <img *ngIf="castMember.profile_path != '' && castMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w200' + castMember.profile_path"/>
     <p *ngIf="castMember.profile_path == null || castMember.profile_path == ''">No Image Avaialable</p>
     <ion-card-content>
       <h1>{{ castMember.character }}</h1>
@@ -31,7 +42,7 @@
   </ion-card>
   <h4>Crew</h4>
   <ion-card *ngFor="let crewMember of crew" (click)="storePersonId(crewMember)">
-    <img *ngIf="crewMember.profile_path != '' && crewMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w300' + crewMember.profile_path"/>
+    <img *ngIf="crewMember.profile_path != '' && crewMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w200' + crewMember.profile_path"/>
     <p *ngIf="crewMember.profile_path == null || crewMember.profile_path == ''">No Image Available</p>
     <ion-card-content>
      <h2>{{ crewMember.name }}</h2>

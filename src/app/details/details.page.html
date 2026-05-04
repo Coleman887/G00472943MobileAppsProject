@@ -1,9 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{ personDetails.name }}</ion-title>
+     <img [src]="'https://files.readme.io/29c6fee-blue_short.svg'" style="height: 25px;"/>
+     <ion-buttons slot="start">
+      <ion-button (click)="router.navigate(['movie-details'])">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-item>{{ personDetails.name }}</ion-item>
      <ion-buttons slot="end">
       <ion-button (click)="router.navigate(['favourites'])">
-        <ion-icon slot="icon-only" name="heart"></ion-icon>
+        <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
       </ion-button>
             <ion-button (click)="router.navigate(['home'])">
         <ion-icon slot="icon-only" name="home"></ion-icon>
@@ -22,10 +28,11 @@
   <h4 *ngIf="personDetails.deathday != null">{{ personDetails.deathday }}</h4>
  <h4 *ngIf="personDetails.place_of_birth != null"> {{ personDetails.place_of_birth }} </h4>
  <p>{{ personDetails.biography }}</p>
+ <h3>Filmography</h3>
  <ion-card *ngFor="let movieCredits of personMovieCredits" (click)="showMovieDetails(movieCredits)">
   <img *ngIf="movieCredits.poster_path != null" [src]="'https://image.tmdb.org/t/p/w200' + movieCredits.poster_path"/>
 <ion-card-content>
-  {{ movieCredits.title }}
+  <h3>{{ movieCredits.title }}</h3>
 </ion-card-content>
  </ion-card>
 
