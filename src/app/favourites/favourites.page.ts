@@ -13,18 +13,15 @@ import { DataService } from '../services/data';
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonButtons, IonIcon, IonCardContent, CommonModule, FormsModule, IonCard]
 })
-export class FavouritesPage implements OnInit {
 
-  constructor(public router: Router, public data: DataService) { }
-  movies: any[] = [];
+export class FavouritesPage {
 
+  constructor(public router: Router, public data: DataService) { 
 
-
-
-  ngOnInit() {
   }
 
-
+// Once the details button is clicked on a favourite movie, uses DataService to stores the movies info and navigates to it's
+// movie-details page
 showMovieDetails(movie: any) {
   this.data.selectedMovieId = movie.id;
   this.data.selectedMovieTitle = movie.title;

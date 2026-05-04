@@ -20,20 +20,30 @@
 
 <ion-content [fullscreen]="true">
  <ion-card>
+  <div style="display: flex;">
 <img *ngIf="personDetails.profile_path != '' && personDetails.profile_path != null" [src]="'https://image.tmdb.org/t/p/w300' +  personDetails.profile_path"/>
 <p *ngIf="personDetails.profile_path == null || personDetails.profile_path == ''">No Image Avaialable</p>
-</ion-card>
+<div style="padding: 10px;">
+
  <h4 *ngFor="let otherName of personDetails.also_known_as"> {{ otherName }} </h4>
  <h4 *ngIf="personDetails.birthday != null">{{ personDetails.birthday }}</h4>
   <h4 *ngIf="personDetails.deathday != null">{{ personDetails.deathday }}</h4>
  <h4 *ngIf="personDetails.place_of_birth != null"> {{ personDetails.place_of_birth }} </h4>
  <p>{{ personDetails.biography }}</p>
+ </div>
+</div>
+ </ion-card>
  <h3>Filmography</h3>
  <ion-card *ngFor="let movieCredits of personMovieCredits" (click)="showMovieDetails(movieCredits)">
+  <div style="display: flex;">
   <img *ngIf="movieCredits.poster_path != null" [src]="'https://image.tmdb.org/t/p/w200' + movieCredits.poster_path"/>
+  <div style="padding: 10px;">
 <ion-card-content>
-  <h3>{{ movieCredits.title }}</h3>
+  <h1>{{ movieCredits.title }}</h1>
+  {{ movieCredits.overview }}
 </ion-card-content>
+</div>
+</div>
  </ion-card>
 
 </ion-content>

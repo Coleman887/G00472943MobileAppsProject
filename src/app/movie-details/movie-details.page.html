@@ -21,28 +21,33 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-   <p>{{ data.selectedMovieTitle }}</p> 
-  <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"/>
-  <p>{{ data.selectedMovieOverview }}</p>
-  <p *ngIf="movie.vote_average != null">Audience Rating: {{ movie.vote_average.toFixed(1) }}</p>
+   <h1>{{ data.selectedMovieTitle }}</h1>
+   <div style="display: flex;">
+  <img [src]="'https://image.tmdb.org/t/p/w342' + data.selectedMoviePoster"/>
+  <div style="padding: 10px;">
+  <p> {{ data.selectedMovieOverview }} </p>
   <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == false" size="medium" color="primary" (click)="addToFavouritesButton()">Add To Favourites
   <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
   </ion-button>
   <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == true" size="medium" color="light" (click)="removeFromFavouritesButton()">Remove From favourites
   <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
   </ion-button>
+  </div>
+  </div>
   <h4>Cast</h4>
   <ion-card *ngFor="let castMember of cast" (click)="storePersonId(castMember)">
-    <img *ngIf="castMember.profile_path != '' && castMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w200' + castMember.profile_path"/>
-    <p *ngIf="castMember.profile_path == null || castMember.profile_path == ''">No Image Avaialable</p>
-    <ion-card-content>
+    <div style="display: flex;">
+<img *ngIf="castMember.profile_path != '' && castMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w185' + castMember.profile_path"/>
+<p *ngIf="castMember.profile_path == null || castMember.profile_path == ''">No Image Avaialable</p>
+<ion-card-content>
       <h1>{{ castMember.character }}</h1>
       <h2>{{ castMember.name }}</h2>
     </ion-card-content>
+    </div>
   </ion-card>
   <h4>Crew</h4>
   <ion-card *ngFor="let crewMember of crew" (click)="storePersonId(crewMember)">
-    <img *ngIf="crewMember.profile_path != '' && crewMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w200' + crewMember.profile_path"/>
+    <img *ngIf="crewMember.profile_path != '' && crewMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w185' + crewMember.profile_path"/>
     <p *ngIf="crewMember.profile_path == null || crewMember.profile_path == ''">No Image Available</p>
     <ion-card-content>
      <h2>{{ crewMember.name }}</h2>

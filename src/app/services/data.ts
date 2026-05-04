@@ -6,18 +6,16 @@ import { Storage } from '@ionic/storage-angular'
 })
 export class DataService {
 
+  // Importing Storage and initialising it in the constructor
   constructor(private storage: Storage) {
     this.init();
   }
-
+// Creates an instance of the storage
   async init() {
     this.storage = await this.storage.create();
   }
 
-  async set(key: string, value: any) {
-    await this.storage.set(key, value);
-  }
-
+// These are the properties used to share needed data across the pages of the application
   selectedMovieTitle: string = "";
   selectedMovieId: number = 0;
   selectedPersonId: number = 0;
@@ -25,7 +23,7 @@ export class DataService {
   selectedMovieOverview: string = "";
   selectedMoviePoster: string = "";
 
-// This method will 'push' the selected movie to the favouritesList array.
+// This method will 'push' the selected movie to the favouritesList array and save it to storage.
 async addFavourite(movie: any) { 
     this.favouritesList.push(movie);
     await this.storage.set('favourites', this.favouritesList);
@@ -47,6 +45,8 @@ async removeFavourite(movie: any) {
     return false;
   }
 
+// Method used to load the favourites from storage at the beginning of the application. Initially caused the program to fail to load anything, but after adding the null check
+// it's working as intended.
   async storedFavourites() {
     let stored = await this.storage.get('favourites');
     if (stored != null) {
