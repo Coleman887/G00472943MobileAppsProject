@@ -1,13 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title> {{ data.selectedMovieTitle }} </ion-title>
+     <ion-buttons slot="end">
+      <ion-button (click)="router.navigate(['favourites'])">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+      </ion-button>
+            <ion-button (click)="router.navigate(['home'])">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   {{ data.selectedMovieOverview }}
-  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == false" size="medium" (click)="addToFavouritesButton()">Add To Favourites</ion-button>
-  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == true" size="medium" (click)="removeFromFavouritesButton()">Remove From Favourites</ion-button>
+  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == false" size="medium" (click)="addToFavouritesButton()">Add To Favourites
+  <ion-icon slot="icon-only" name="heart"></ion-icon>
+  </ion-button>
+  <ion-button *ngIf="data.isFavourite(data.selectedMovieId) == true" size="medium" (click)="removeFromFavouritesButton()">Remove From favourites
+  <ion-icon slot="icon-only" name="heart"></ion-icon>
+  </ion-button>
   <h4>Cast</h4>
   <ion-card *ngFor="let castMember of cast" (click)="storePersonId(castMember)">
     <img *ngIf="castMember.profile_path != '' && castMember.profile_path != null" [src]="'https://image.tmdb.org/t/p/w300' + castMember.profile_path"/>

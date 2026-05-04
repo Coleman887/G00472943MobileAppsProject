@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonIcon, IonToolbar, IonCard, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonIcon, IonToolbar, IonCard, IonCardContent, IonButton, IonButtons } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { heart, home, logoApple, settingsSharp, star} from 'ionicons/icons';
@@ -14,7 +14,7 @@ import { ViewWillEnter } from '@ionic/angular/standalone';
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent]
+  imports: [IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent, IonButton, IonButtons]
 })
 export class DetailsPage implements OnInit, ViewWillEnter {
   movies: any[] = []
@@ -22,7 +22,7 @@ export class DetailsPage implements OnInit, ViewWillEnter {
   personMovieCredits: any[] = [];
 
   constructor(public router: Router, private myhttp: MyHttpService, public data: DataService) { 
-
+      addIcons({ heart, home, logoApple, settingsSharp, star })
   }
 // Added this method to both details.ts and movie-details.ts, was trying to make clicking on the
 // filmography to bring you to that particular movies movie details, but this code in ngOnInit was making it keep the

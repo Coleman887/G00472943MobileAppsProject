@@ -1,6 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>{{ personDetails.name }}</ion-title>
+     <ion-buttons slot="end">
+      <ion-button (click)="router.navigate(['favourites'])">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+      </ion-button>
+            <ion-button (click)="router.navigate(['home'])">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

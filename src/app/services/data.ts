@@ -11,7 +11,7 @@ export class DataService {
   }
 
   async init() {
-    const storage = await this.storage.create();
+    this.storage = await this.storage.create();
   }
 
   async set(key: string, value: any) {
@@ -48,7 +48,10 @@ async removeFavourite(movie: any) {
   }
 
   async storedFavourites() {
-    this.favouritesList = await this.storage.get('favourites');
+    let stored = await this.storage.get('favourites');
+    if (stored != null) {
+      this.favouritesList = stored;
+    }
   }
 }
 

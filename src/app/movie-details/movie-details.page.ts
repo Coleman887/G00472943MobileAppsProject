@@ -14,7 +14,7 @@ import { ViewWillEnter } from '@ionic/angular/standalone';
   templateUrl: './movie-details.page.html',
   styleUrls: ['./movie-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonButton, IonCard, IonIcon, IonCardContent, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonButtons, IonCard, IonIcon, IonCardContent, CommonModule, FormsModule]
 })
 export class MovieDetailsPage implements OnInit, ViewWillEnter {
 
