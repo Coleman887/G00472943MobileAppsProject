@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   }
 
 
+// Loads the favourites list using Ionic Storage at the beginning of the application. 
 ngOnInit() {
   this.data.storedFavourites();
 }

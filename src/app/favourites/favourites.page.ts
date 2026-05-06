@@ -20,7 +20,7 @@ export class FavouritesPage {
 
   }
 
-// Once the details button is clicked on a favourite movie, uses DataService to stores the movies info and navigates to it's
+// Once the details button is clicked on a favourite movie, uses DataService to stores the movie's info and navigates to it's
 // movie-details page
 showMovieDetails(movie: any) {
   this.data.selectedMovieId = movie.id;
