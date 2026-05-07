@@ -32,6 +32,8 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
+// Initially had the theme match the user's current OS theme, but now adding a toggle so the class-based dark mode is needed.
+
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+ @import "@ionic/angular/css/palettes/dark.class.css";
+//@import '@ionic/angular/css/palettes/dark.system.css';

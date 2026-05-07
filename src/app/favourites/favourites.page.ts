@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonButtons, IonIcon, IonCardContent, IonCard } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data';
+import { addIcons } from 'ionicons';
+import { sunny, heart, home, arrowBack, moon } from 'ionicons/icons';
 
 
 @Component({
@@ -17,7 +19,7 @@ import { DataService } from '../services/data';
 export class FavouritesPage {
 
   constructor(public router: Router, public data: DataService) { 
-
+      addIcons({ heart, home, arrowBack, moon, sunny})
   }
 
 // Once the details button is clicked on a favourite movie, uses DataService to stores the movie's info and navigates to it's

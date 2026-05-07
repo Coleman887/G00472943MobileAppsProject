@@ -9,6 +9,7 @@ export class DataService {
   // Importing Storage and initialising it in the constructor
   constructor(private storage: Storage) {
     this.init();
+    this.initializeTheme();
   }
 // Creates an instance of the storage
   async init() {
@@ -22,6 +23,7 @@ export class DataService {
   favouritesList: any[] = [];
   selectedMovieOverview: string = "";
   selectedMoviePoster: string = "";
+  theme: string = 'dark';
 
 // This method will 'push' the selected movie to the favouritesList array and save it to storage.
 async addFavourite(movie: any) { 
@@ -52,6 +54,30 @@ async removeFavourite(movie: any) {
     if (stored != null) {
       this.favouritesList = stored;
     }
+  }
+
+  initializeTheme() {
+    let currentTheme = localStorage.getItem('theme');
+
+    if (!currentTheme) {
+      currentTheme = 'dark';
+      localStorage.setItem('theme', currentTheme);
+
+    }
+    this.applyTheme(currentTheme);
+  }
+
+  toggleTheme() {
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    this.applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  }
+
+  applyTheme(theme: string) {
+    this.theme = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.classList.toggle('ion-palette-dark', theme === 'dark');
   }
 }
 

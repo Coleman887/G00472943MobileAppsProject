@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonIcon, IonToolbar, IonCard, IonCardContent, IonButton, IonButtons, IonItem } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { heart, home } from 'ionicons/icons';
+import { heart, home, moon, sunny } from 'ionicons/icons';
 import { MyHttpService } from '../services/my-http';
 import { DataService } from '../services/data';
 import { ViewWillEnter } from '@ionic/angular/standalone';
@@ -21,7 +21,7 @@ export class DetailsPage implements ViewWillEnter {
   personMovieCredits: any[] = [];
 
   constructor(public router: Router, private myhttp: MyHttpService, public data: DataService) { 
-      addIcons({ heart, home })
+      addIcons({ heart, home, moon, sunny })
   }
 // Added this method to both details.ts and movie-details.ts, was trying to make clicking on the
 // filmography to bring you to that particular movies movie details, but this code in ngOnInit was making it keep the

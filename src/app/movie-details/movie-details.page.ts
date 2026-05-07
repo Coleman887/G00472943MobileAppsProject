@@ -6,7 +6,7 @@ import { MyHttpService } from '../services/my-http';
 import { DataService } from '../services/data';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { arrowBack, heart, home } from 'ionicons/icons';
+import { arrowBack, heart, home, moon, sunny } from 'ionicons/icons';
 import { ViewWillEnter } from '@ionic/angular/standalone';
 
 @Component({
@@ -22,7 +22,7 @@ export class MovieDetailsPage implements ViewWillEnter {
   crew: any[] = [];
 
   constructor(public router : Router, private myhttp: MyHttpService, public data: DataService) { 
-      addIcons({ heart, home, arrowBack })
+      addIcons({ heart, home, arrowBack, moon, sunny })
   }
 
 // Orginally had this functionality set in ngOnInit, but because that was only loading this once at the start of the application, it broke functionality

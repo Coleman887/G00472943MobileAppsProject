@@ -5,6 +5,9 @@
     </ion-title>
      <ion-item>G00472943</ion-item>
     <ion-buttons slot="end">
+       <ion-button (click)="data.toggleTheme()">
+        <ion-icon slot="icon-only" [name]="data.theme === 'dark' ? 'sunny' : 'moon'"></ion-icon>
+      </ion-button>
       <ion-button (click)="router.navigate(['favourites'])">
         <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
       </ion-button>

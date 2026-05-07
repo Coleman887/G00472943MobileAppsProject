@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IonButtons } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { heart, home } from 'ionicons/icons';
+import { heart, home, moon, sunny, arrowBack } from 'ionicons/icons';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
   key: string = "";
 
   constructor(public router : Router, private myhttp: MyHttpService, public data: DataService) {
-addIcons({ heart, home });
+addIcons({ heart, home, moon, sunny, arrowBack });
   }
 
 
