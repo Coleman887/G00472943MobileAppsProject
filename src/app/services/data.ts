@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage-angular'
 })
 export class DataService {
 
-  // Importing Storage and initialising it in the constructor
+// Importing Storage and initialising it in the constructor, both the Ionic and localStorage are initialised here
   constructor(private storage: Storage) {
     this.init();
     this.initializeTheme();
@@ -55,7 +55,7 @@ async removeFavourite(movie: any) {
       this.favouritesList = stored;
     }
   }
-
+// This method fetches the currentTheme from localStorage, if it is null sets it to dark and applies it.
   initializeTheme() {
     let currentTheme = localStorage.getItem('theme');
 
@@ -67,6 +67,9 @@ async removeFavourite(movie: any) {
     this.applyTheme(currentTheme);
   }
 
+// This method gets the currentTheme from storage, defaults to dark if nothing is stored.
+// If the theme is dark, newTheme is set to light and vice-versa...
+// Then applies the new theme and saves it to storage.  
   toggleTheme() {
     const currentTheme = localStorage.getItem('theme') || 'dark';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -75,6 +78,8 @@ async removeFavourite(movie: any) {
     localStorage.setItem('theme', newTheme);
   }
 
+// Updates the theme so the icon will change, then toggles the dark mode class on or off depending on what theme is selected.
+// This is what the .html pages reads (data.theme) to know which icon to show depending on which mode it's in.
   applyTheme(theme: string) {
     this.theme = theme === 'dark' ? 'dark' : 'light';
     document.documentElement.classList.toggle('ion-palette-dark', theme === 'dark');

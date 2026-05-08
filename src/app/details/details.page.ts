@@ -24,7 +24,7 @@ export class DetailsPage implements ViewWillEnter {
       addIcons({ heart, home, moon, sunny })
   }
 // Added this method to both details.ts and movie-details.ts, was trying to make clicking on the
-// filmography to bring you to that particular movies movie details, but this code in ngOnInit was making it keep the
+// filmography to bring you to that particular movie's movie details, but this code in ngOnInit was making it keep the
 // previous movies cast and character names, moving this logic to IonViewWillEnter will ensure that this data is collected
 // every time the page is loaded, not just the first time, fixing the issue...
   ionViewWillEnter() {
