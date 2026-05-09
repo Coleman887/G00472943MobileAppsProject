@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonCard, IonSearchbar, IonItem } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonCard, IonSearchbar, IonItem, ViewWillEnter } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data';
 import { MyHttpService } from '../services/my-http';
@@ -16,12 +16,22 @@ import { heart, home, moon, sunny, arrowBack } from 'ionicons/icons';
   styleUrls: ['home.page.scss'],
   imports: [IonHeader, IonItem, IonToolbar, IonTitle, IonSearchbar, IonContent, IonButton, IonButtons, IonCard, IonIcon, FormsModule, CommonModule, IonItem],
 })
-export class HomePage implements OnInit {
+export class HomePage implements ViewWillEnter {
   movies: any[] = [];
   key: string = "";
 
   constructor(public router : Router, private myhttp: MyHttpService, public data: DataService) {
 addIcons({ heart, home, moon, sunny, arrowBack });
+  }
+
+// Ran into the same problem as on movie-details and details, if you searched for a movie and then returned to Home, there was no way to display the trending movies again
+// without restarting the app, due to the call for getTrending being in ngOnInit, meaning it wouldn't run again on navigating back to the page.
+// If the key is empty (nothing in searchbox) it calls getTrending, otherwise it calls searchMovies.
+
+  ionViewWillEnter() {
+   this.key == ''
+   this.getTrending();
+    
   }
 
 
@@ -33,10 +43,15 @@ addIcons({ heart, home, moon, sunny, arrowBack });
 }
 
 // This sends the search query to the API, then whatever is found is returned to this.movies.
+// Had to be changed to include an if statement, so that if search is clicked with an empty key value it calls getTrending.
 searchMovies() {
+  if (this.key == '') {
+    this.getTrending();
+  } else {
   this.myhttp.searchMovies(this.key).subscribe((data: any) => {
     this.movies = data.results;
   })
+}
 }
 
 // This method gets called from the Home page when the user clicks on a movie poster.
@@ -55,9 +70,5 @@ sortByRating() {
   this.movies.sort((movieA, movieB) => movieB.vote_average - movieA.vote_average);
 }
 
-  // Implementing this method from the OnInit interface to run the getTrending method as soon as the page begins loading.
-  ngOnInit() {
-    this.getTrending();
-}
 
 }
